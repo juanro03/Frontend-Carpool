@@ -1,0 +1,82 @@
+/* Estilos generales para las tarjetas */
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Asegura espacio igual entre las tarjetas */
+  gap: 20px; /* Espacio entre tarjetas */
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 400px;
+  height: auto;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.cards-container {
+  display: grid;
+  gap: 10px;
+  justify-content: left;
+  grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+  
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.card-body {
+  margin-bottom: 20px;
+}
+
+.ver-button {
+  background-color: #0093aa;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Media queries para pantallas medianas */
+@media (max-width: 1200px) {
+  .card {
+    flex: 1 1 calc(50% - 40px); /* 2 tarjetas por fila en pantallas medianas */
+  }
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+  .grid-container {
+    flex-direction: column; /* Apila las tarjetas una sobre otra */
+  }
+
+  .card {
+    flex: 1 1 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+  }
+}
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Tarjetas más pequeñas en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-container {
+    grid-template-columns: 1fr; /* Una sola tarjeta por fila en pantallas muy pequeñas */
+  }
+}
