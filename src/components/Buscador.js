@@ -16,7 +16,7 @@ function Buscador() {
   };
 
   const fetchSuggestions = (query, setSuggestions) => {
-    if (query.length < 3) return; // Evitar búsquedas innecesarias con menos de 3 caracteres
+    //if (query.length < 3) return; // Evitar búsquedas innecesarias con menos de 3 caracteres
 
     // Normaliza la consulta de búsqueda
     const normalizedQuery = normalizeText(query);
@@ -29,6 +29,7 @@ function Buscador() {
     // Limita el número de sugerencias a 4
     const suggestions = filteredCities.slice(0, 4).map(city => ({
       city: city.city,
+      province: city.admin_name,
       country: city.country,
     }));
 
@@ -48,7 +49,7 @@ function Buscador() {
   };
 
   const handleSelect = (suggestion, setQuery, setSuggestions) => {
-    setQuery(`${suggestion.city}, ${suggestion.country}`);
+    setQuery(`${suggestion.city}, ${suggestion.province}, ${suggestion.country}`);
     setSuggestions([]);
   };
 
@@ -71,7 +72,7 @@ function Buscador() {
                 style={styles.suggestionItem}
                 onClick={() => handleSelect(suggestion, setOriginQuery, setOriginSuggestions)}
               >
-                {suggestion.city}, {suggestion.country}
+                {suggestion.city}, {suggestion.province}, {suggestion.country}
               </li>
             ))}
           </ul>
@@ -95,7 +96,7 @@ function Buscador() {
                 style={styles.suggestionItem}
                 onClick={() => handleSelect(suggestion, setDestinationQuery, setDestinationSuggestions)}
               >
-                {suggestion.city}, {suggestion.country}
+                {suggestion.city}, {suggestion.province}, {suggestion.country}
               </li>
             ))}
           </ul>
